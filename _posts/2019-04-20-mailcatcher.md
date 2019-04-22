@@ -1,5 +1,6 @@
 ---
 title: Setting up an email service for your development environment
+tags: [dev, ruby]
 ---
 I'm almost certain that most applications will come to a point where they are required to communicate with an individual, and most of the time this communication is done using an email, but in this post I'm not talking about how to make this integration with your app, there are many resources for that, here we are going to talk about how to run an small email service for you local environment using [MailCatcher](https://mailcatcher.me).
 
@@ -50,5 +51,75 @@ Ruby, only MailCatcher will require this.
 ### Prerequisites
 * Ruby >= 2.0.0, based on [RubyGems](https://rubygems.org/gems/mailcatcher)
 
+### Installation
 
+The installation is really simple you just need to run
+```shell
+gem install mailcatcher
+```
+And that is it, the gem command will install all the internal dependencies for
+MailCatcher.
+
+### Run
+The simplest way to make it run is just to invoke the command
+```shell
+mailcatcher
+```
+After running this you'll see a small prompt with the default for this execution
+```shell
+Starting MailCatcher
+==> smtp://127.0.0.1:1025
+==> http://127.0.0.1:1080/
+*** MailCatcher runs as a daemon by default. Go to the web interface to quit.
+```
+By default MailCatcher SMTP port is `1025` and the browser port is `1080`, if we
+access `http://127.0.0.1:1080` you'll be able to see MailCatcher running.
+![MailCatcher ScreenShot](/assets/img/2019_04_20/browser-01.png)
+
+To quit MailCatcher you can kill the process or press the `Quit` button on the
+browser.
+
+In case you want to run MailCatcher in a different port, let's say `2050` for
+SMTP and `2080` for HTTP then you should execute the command like this:
+```shell
+mailcatcher --smtp-port 2050 --http-port 2080
+```
+
+For more options run:
+```shell
+mailcatcher -h
+```
+
+### Configure your app
+
+This section depends a lot on you application, so I'll just cover how to
+configure a simple rails app in here, but don't be afraid for most applications
+you'll only need the following data:
+* SMTP Address: `127.0.0.1`
+* SMTP Port: `1025`
+* SMTP User: `ANYTHING_YOU_WANT`
+* SMTP Password: `ANYTHING_YOU_WANT`
+
+It is important to say that MailCatcher won't require you to send any kind of
+authentication, remember that you should only use this in your dev environment,
+therefore you can put anything, or nothing, as `user/password` combo.
+
+For a simple rails application you only need to configure your
+`enviroments/development.rb` file with:
+```ruby
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+```
+And that's it, rails will start using MailCatcher.
+
+Here is an example of an email on MailCatcher:
+![First Email](/assets/img/2019_04_20/browser-02.png)
+
+## Finally
+And this is how I conclude this post, I hope that you can find this helpful and
+use it in your current project.
+
+## Links
+* [MailCatcher](https://mailcatcher.me)
+* [MailCatcher Github's Page](https://github.com/sj26/mailcatcher)
 
