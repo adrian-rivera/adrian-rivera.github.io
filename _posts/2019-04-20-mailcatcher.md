@@ -2,7 +2,7 @@
 title: Setting up an email service for your development environment
 tags: [dev, ruby]
 ---
-I'm almost certain that most applications will come to a point where they are required to communicate with an individual, and most of the time this communication is done using an email, but in this post I'm not talking about how to make this integration with your app, there are many resources for that, here we are going to talk about how to run an small email service for you local environment using [MailCatcher](https://mailcatcher.me).
+I'm almost certain that most applications will come to a point where they are required to communicate with an individual, and most of the time this communication is done using an email, but in this post I'm not talking about how to make this integration with your app, there are many resources for that, here we are going to talk about how to run an small email service for you local environment using MailCatcher.
 
 Ok, why on earth would you want to do that? You could simply put your STMP personal credentials on your configuration, or integrate with an extra service just for your developer needs, sure you could do that, but now think on the other problems that you will face:
 
@@ -120,6 +120,6 @@ And this is how I conclude this post, I hope that you can find this helpful and
 use it in your current project.
 
 ## Links
-* [MailCatcher](https://mailcatcher.me)
+* [MailCatcher Official Site](https://mailcatcher.me)
 * [MailCatcher Github's Page](https://github.com/sj26/mailcatcher)
 
