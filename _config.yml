@@ -1,3 +1,10 @@
 title: Thoughts from a dev
 author: Adrian Rivera
 theme: jekyll-theme-hacker
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "my_post"
