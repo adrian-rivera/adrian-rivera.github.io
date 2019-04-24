@@ -2,7 +2,7 @@
 title: Setting up an email service with MailCatcher for your development environment
 tags: [dev, ruby]
 ---
-In this post we are going to talk about how to run an small email service
+In this post we are going to talk about how to run a small email service
 for your local environment and why you should do it.
 
 Most applications come to a point where they are required to communicate with an individual,
